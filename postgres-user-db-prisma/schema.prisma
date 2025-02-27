@@ -1,0 +1,14 @@
+generator client {
+  provider = "prisma-client-js"
+   output = "../postgres-user-db-prisma/prisma-user-db-generated-types"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("PG_USER_DATABASE_URL")
+}
+
+model User {
+  id Int  @id  @default(autoincrement())
+  title String
+}

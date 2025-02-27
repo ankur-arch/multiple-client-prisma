@@ -6,22 +6,29 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postinstall": "npx prisma generate --schema ./postgres-user-db-prisma/schema.prisma && npx prisma generate --schema ./postgres-content-db-prisma/schema.prisma",
+    "generate": "npx prisma generate --schema ./postgres-user-db-prisma/schema.prisma && npx prisma generate --schema ./postgres-content-db-prisma/schema.prisma",
+    "migrate": "npx prisma migrate dev --schema ./postgres-user-db-prisma/schema.prisma && npx prisma migrate dev --schema ./postgres-content-db-prisma/schema.prisma",
+    "deploy": "npx prisma migrate deploy --schema ./postgres-user-db-prisma/schema.prisma && npx prisma migrate deploy --schema ./postgres-content-db-prisma/schema.prisma",
+    "studio": "npx prisma studio --schema ./postgres-user-db-prisma/schema.prisma --port 5554 & npx prisma studio --schema ./postgres-content-db-prisma/schema.prisma --port 5556"
   },
   "dependencies": {
+    "@prisma/client": "^6.4.1",
+    "next": "15.1.7",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "next": "15.1.7"
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@eslint/eslintrc": "^3",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "postcss": "^8",
-    "tailwindcss": "^3.4.1",
     "eslint": "^9",
     "eslint-config-next": "15.1.7",
-    "@eslint/eslintrc": "^3"
+    "postcss": "^8",
+    "prisma": "^6.4.1",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
   }
 }
